@@ -1,0 +1,6 @@
+<h1>Hello, <%= currentUser.username %> !</h1>
+
+<form action="/sessions/sign_out" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>delete</button>
+</form>
