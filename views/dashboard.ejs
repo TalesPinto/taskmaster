@@ -1,6 +1,22 @@
-<h1>Hello, <%= currentUser.username %> !</h1>
+<!-- fix it username later -->
+<p>Hello, <%= currentUser.username %> </p>
 
 <form action="/sessions/sign_out" method="post">
     <input type="hidden" name="_method" value="delete">
     <button>delete</button>
 </form>
+
+<form action="/tasks">
+    <button>new task</button>
+</form>
+
+
+
+<% for (let task of tasks) { %>
+    <div>
+        <h3><%= task.title %></h3>
+        <p><%= task.description %></p>
+        <p><%= task.user_id_assigner %></p>
+        <p><%= task.status %></p>
+    </div>
+<% } %>  

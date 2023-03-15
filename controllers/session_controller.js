@@ -55,7 +55,7 @@ router.post('/sessions/sign_in', (req, res) => {
             if (result) {
                 // checks password encrypted in the db and compares with the password given
                 req.session.userId = user.id
-                res.render('dashboard')
+                res.redirect('/dashboard')
             } else {
                 res.render('sign_in')
             }
