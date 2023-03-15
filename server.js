@@ -8,10 +8,12 @@ const session = require('express-session');
 
 // requiring external modules and middlewares
 const methodOverride = require('./middlewares/method_override');
+const homeController = require('./controllers/home_controller');
 const taskController = require('./controllers/task_controller');
 const sessionController = require('./controllers/session_controller');
 const setCurrentUser = require('./middlewares/set_current_user')
 const viewHelpers = require('./middlewares/view_helpers')
+const ensureLoggedIn = require('./middlewares/ensure_logged_in')
 
 //............
 
@@ -34,6 +36,7 @@ app.use(setCurrentUser)
 app.use(viewHelpers)
 
 // routers
+app.use('/', homeController);
 app.use('/', taskController);
 app.use('/', sessionController);
 

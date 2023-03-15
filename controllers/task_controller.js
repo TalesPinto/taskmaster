@@ -16,20 +16,6 @@ router.get('/dashboard', ensureLoggedIn, (req, res) => {
     })
 })
 
-router.delete('/tasks', (req, res) => {
-    console.log('cp1')
-    console.log(req.body.id)
-    const sql = `DELETE FROM tasks WHERE id = $1;`
-    db.query(sql, [req.body.id], (err, dbRes) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.redirect(`/dashboard`)
-        }
-    })
-})
-
-
 router.get('/tasks', ensureLoggedIn, (req, res) => {
     console.log(req.session.userId)
     res.render('new_task')
@@ -52,10 +38,24 @@ router.put('/tasks', (req, res) => {
         if (err) {
             console.log(err)
         } else {
-            console.log(req.body.title)
+            // console.log(req.body.title)
             res.redirect(`/dashboard`)
         }
     })
 })
+
+router.delete('/tasks/:task_id', (req, res) => {
+    console.log('cp1')
+    console.log(req.params.task_id)
+    const sql = `DELETE FROM tasks WHERE id = $1;`
+    db.query(sql, [req.params.task_id], (err, dbRes) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect(`/dashboard`)
+        }
+    })
+})
+
 
 module.exports = router;

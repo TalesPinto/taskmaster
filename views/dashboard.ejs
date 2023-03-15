@@ -23,7 +23,10 @@
             <input type="number" name="user_id_assigner" value="<%= task.user_id_assigner %>">
             <input type="hidden" name="id" value="<%= task.id %>">
             <button>Edit</button>
-            <a href="/tasks">delete</a>
+        </form>
+        <form action="/tasks/<%= task.id %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button>Delete</button>
         </form>
     </div>
 <% } %>  
