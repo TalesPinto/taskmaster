@@ -3,20 +3,27 @@
 
 <form action="/sessions/sign_out" method="post">
     <input type="hidden" name="_method" value="delete">
-    <button>delete</button>
+    <button>Sign Out</button>
 </form>
 
 <form action="/tasks">
-    <button>new task</button>
+    <button>New Task</button>
 </form>
 
 
 
 <% for (let task of tasks) { %>
     <div>
-        <h3><%= task.title %></h3>
-        <p><%= task.description %></p>
-        <p><%= task.user_id_assigner %></p>
-        <p><%= task.status %></p>
+        <form action="/tasks" method="post">
+            <input type="hidden" name="_method" value="put">
+            <input type="text" name="title" value="<%= task.title %>">
+            <input type="text" name="description" value="<%= task.description %>">
+            <input type="text" name="comment" value="<%= task.comment %>">
+            <input type="text" name="status" value="<%= task.status %>">
+            <input type="number" name="user_id_assigner" value="<%= task.user_id_assigner %>">
+            <input type="hidden" name="id" value="<%= task.id %>">
+            <button>Edit</button>
+            <a href="/tasks">delete</a>
+        </form>
     </div>
 <% } %>  
