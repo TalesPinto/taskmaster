@@ -199,6 +199,11 @@ h2 {
     align-items: center;
 }
 
+.task-card>form>label {
+    font-size: 10px;
+    font-weight: 100;
+}
+
 .task-card>form>input {
     width: 100%;
     font-size: 10px;
@@ -221,10 +226,12 @@ h2 {
 
 .card-title {
     font-weight: 700;
-    margin-bottom: 3px;
+    /* margin-bottom: 3px; */
+    text-align: center;
 }
 
 .textbox-description-db {
+    margin-top: 3px;
     height: 50px;
 }
 
