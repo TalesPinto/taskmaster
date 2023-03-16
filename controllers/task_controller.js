@@ -9,13 +9,25 @@ router.get('/', (req, res) => {
     res.render('home');
 })
 
-// users dashboard - only accessible if an user is logged in (ensureLoggedIn)
+// users dashboard (ready only) - only accessible if an user is logged in (ensureLoggedIn)
 router.get('/dashboard', ensureLoggedIn, (req, res) => {
 
     const sql = 'SELECT * FROM tasks WHERE (user_id_assigner = $1) OR (user_id_assignee = $1) ORDER BY id ASC;'
     db.query(sql, [req.session.userId], (err, dbRes) => {
         let tasks = dbRes.rows // dbRes.rows give us an ARRAY
         res.render('dashboard', { tasks })
+    })
+})
+
+// user dashboard (edit and delete) ONLY the task choosen
+router.get('/dashboard/:task_id', ensureLoggedIn, (req, res) => {
+
+    const sql = 'SELECT * FROM tasks WHERE (user_id_assigner = $1) OR (user_id_assignee = $1) ORDER BY id ASC;'
+    db.query(sql, [req.session.userId], (err, dbRes) => {
+        let tasks = dbRes.rows // dbRes.rows give us an ARRAY
+        let taskId = req.params.task_id
+        console.log(req.params.task_id)
+        res.render('dashboard_edit', { tasks, taskId })
     })
 })
 
