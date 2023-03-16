@@ -24,7 +24,7 @@ router.get('/dashboard/:task_id', ensureLoggedIn, (req, res) => {
 
     const sql = 'SELECT * FROM tasks WHERE (user_id_assigner = $1) OR (user_id_assignee = $1) ORDER BY id ASC;'
     db.query(sql, [req.session.userId], (err, dbRes) => {
-        let tasks = dbRes.rows // dbRes.rows give us an ARRAY
+        let tasks = dbRes.rows // all tasks rows
         let taskId = req.params.task_id
         console.log(req.params.task_id)
         res.render('dashboard_edit', { tasks, taskId })

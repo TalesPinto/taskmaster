@@ -1,8 +1,8 @@
 <!-- fix it username later -->
 
 <section class="signout-header">
-    <p>Hello, <%= currentUser.username %> </p>
-
+    <p>Hello, <strong><%= currentUser.username %></strong>  </p>
+    <p>Your id is: <strong><%= currentUser.id %></strong>  </p>
     <form action="/sessions/sign_out" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>Sign Out</button>
@@ -16,7 +16,7 @@
 
 <div class="tasks-wrapper">
     <% for (let task of tasks) { %>
-        <% if (Number(task.id) === Number(taskId)) { %>
+        <% if (Number(task.id) === Number(taskId)) { %> 
             <div class="task-card">
                 <form action="/tasks" method="post">
                     <input type="hidden" name="_method" value="put">
@@ -30,12 +30,12 @@
                     <label for="">Assigner</label>
                     <input type="number" name="user_id_assigner" value="<%= task.user_id_assigner %>">
                     <input type="hidden" name="id" value="<%= task.id %>">
-                    <button>Edit</button>
+                    <button class="save-btn">Save</button>
                 </form>
                 <!-- router '/tasks/:task_id' created to make it possible to have two features (method put and delete) at the same for loop-->
                 <form action="/tasks/<%= task.id %>" method="post">
                     <input type="hidden" name="_method" value="delete">
-                    <button>Delete</button>
+                    <button class="delete-btn">Delete</button>
                 </form>
             </div>
             <% } else { %>  
@@ -54,7 +54,7 @@
                         <input type="hidden" readonly="true" name="id" value="<%= task.id %>">
                     </form>
                     <form action="/dashboard/<%= task.id %>">
-                        <button>Edit</button>
+                        <button class="edit-btn">Edit</button>
                     </form>
                 </div>
         <% } %>  

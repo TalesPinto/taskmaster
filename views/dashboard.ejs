@@ -1,8 +1,8 @@
 <!-- fix it username later -->
 
 <section class="signout-header">
-    <p>Hello, <%= currentUser.username %> </p>
-
+    <p>Hello, <strong><%= currentUser.username %></strong>  </p>
+    <p>Your id is: <strong><%= currentUser.id %></strong>  </p>
     <form action="/sessions/sign_out" method="post">
         <input type="hidden" name="_method" value="delete">
         <button>Sign Out</button>
@@ -37,7 +37,7 @@
                 <button>Delete</button>
             </form> -->
             <form action="/dashboard/<%= task.id %>">
-                <button>Edit</button>
+                <button class="edit-btn">Edit</button>
             </form>
         </div>
     <% } %>  

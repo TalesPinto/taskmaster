@@ -154,10 +154,6 @@ h2 {
     text-align: right;
 }
 
-.signout-heade>form>button {
-    text-align: right;
-}
-
 .signout-header>form>button {
     background-color: #a8a4f1;
     border-color: white;
@@ -194,6 +190,7 @@ h2 {
 }
 
 .task-card {
+    display: grid;
     background-color: #635ce2;
     padding: 5px;
     align-items: center;
@@ -233,6 +230,16 @@ h2 {
 .textbox-description-db {
     margin-top: 3px;
     height: 50px;
+}
+
+.task-card>form>.save-btn {
+    background-color: rgb(163, 214, 163);
+    border-color: rgb(163, 214, 163);
+}
+
+.task-card>form>.delete-btn {
+    background-color: rgb(226, 164, 164);
+    border-color: rgb(226, 164, 164);
 }
 
 /* NEW TASK */
