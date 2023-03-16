@@ -1,8 +1,6 @@
 * {
     box-sizing: border-box;
-    border: 1px solid red;
-    margin: 0;
-    padding: 0;
+    /* border: 1px solid red; */
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -34,6 +32,15 @@ h1 {
     color: white;
 }
 
+h2 {
+    font-weight: 400;
+}
+
+
+
+
+/* HOME */
+
 .home-wrapper {
     background-color: #a8a4f1;
     display: grid;
@@ -59,12 +66,14 @@ h1 {
     border-color: white;
     border-style: solid;
     border-width: 1px;
-    padding: 4px;
+    width: 60px;
     font-size: 10px;
     margin: auto 5px;
     border-radius: 12px;
 }
 
+
+/* SIGN IN */
 .signin-wrapper {
     display: flex;
     background-color: #a8a4f1;
@@ -76,7 +85,7 @@ h1 {
     border-color: white;
     border-style: solid;
     border-width: 1px;
-    padding: 4px;
+    width: 60px;
     font-size: 10px;
     margin: auto 5px;
     border-radius: 12px;
@@ -98,8 +107,10 @@ h1 {
 .signin-wrapper>form>button {
     display: block;
     margin: 20px 10px;
+    width: 60px;
 }
 
+/* SIGN UP */
 .signup-wrapper {
     display: flex;
     background-color: #a8a4f1;
@@ -111,7 +122,7 @@ h1 {
     border-color: white;
     border-style: solid;
     border-width: 1px;
-    padding: 4px;
+    width: 60px;
     font-size: 10px;
     margin: auto 5px;
     border-radius: 12px;
@@ -133,16 +144,118 @@ h1 {
 .signup-wrapper>form>button {
     display: block;
     margin: 20px 10px;
+    width: 60px;
+}
+
+/*DASHBOARD*/
+
+.signout-header {
+    padding-right: 10px;
+    text-align: right;
+}
+
+.signout-heade>form>button {
+    text-align: right;
+}
+
+.signout-header>form>button {
+    background-color: #a8a4f1;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 400;
+
+}
+
+.new-task-btn>form {
+    padding: 10px 0;
+}
+
+.new-task-btn>form>button {
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    width: 80px;
+    font-size: 10px;
+    margin: auto 5px;
+    border-radius: 12px;
 }
 
 .tasks-wrapper {
     margin: auto;
     display: grid;
-    grid-template-columns: 160px 1fr 1fr;
+    grid-template-columns: 160px 160px 160px;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     gap: 15px;
 }
 
-.tasks-wrapper>.task-card>input {
+.task-card {
+    background-color: #635ce2;
+    padding: 5px;
+    align-items: center;
+}
+
+.task-card>form>input {
+    width: 100%;
     font-size: 10px;
+    background-color: #a8a4f1;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #a8a4f1;
+}
+
+.task-card>form>button {
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    width: 60px;
+    font-size: 10px;
+    margin: auto 5px;
+    border-radius: 12px;
+}
+
+.card-title {
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.textbox-description-db {
+    height: 50px;
+}
+
+/* NEW TASK */
+
+.new-task>form>input {
+    width: 100%;
+    font-size: 10px;
+    background-color: #a8a4f1;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+}
+
+.new-task>form>label {
+    font-size: 10px;
+    padding-left: 10px;
+}
+
+.new-task>form>button {
+    background-color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    width: 80px;
+    font-size: 10px;
+    margin: auto 5px;
+    border-radius: 12px;
+    margin: 10px 5px;
+}
+
+.textbox-description-nt {
+    height: 50px
 }

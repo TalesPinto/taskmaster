@@ -34,6 +34,8 @@ app.use(session({
 }));
 app.use(setCurrentUser)
 app.use(viewHelpers)
+//.............
+
 
 // routers
 app.use('/', homeController);

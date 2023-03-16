@@ -3,24 +3,29 @@ const router = express.Router();
 const db = require('./../db'); // it opens index.js by default
 const ensureLoggedIn = require('./../middlewares/ensure_logged_in')
 
+
+// website home (sign in/sign up)
 router.get('/', (req, res) => {
     res.render('home');
 })
 
+// users dashboard - only accessible if an user is logged in (ensureLoggedIn)
 router.get('/dashboard', ensureLoggedIn, (req, res) => {
 
-    const sql = 'SELECT * FROM tasks WHERE (user_id_assigner = $1) OR (user_id_assignee = $1);'
+    const sql = 'SELECT * FROM tasks WHERE (user_id_assigner = $1) OR (user_id_assignee = $1) ORDER BY id ASC;'
     db.query(sql, [req.session.userId], (err, dbRes) => {
         let tasks = dbRes.rows // dbRes.rows give us an ARRAY
         res.render('dashboard', { tasks })
     })
 })
 
+// renders the new task page - only accessible if an user is logged in (ensureLoggedIn)
 router.get('/tasks', ensureLoggedIn, (req, res) => {
     console.log(req.session.userId)
     res.render('new_task')
 })
 
+// inserts a new task into db - only accessible if an user is logged in (ensureLoggedIn)
 router.post('/tasks/new', ensureLoggedIn, (req, res) => {
 
     const sql = `INSERT INTO tasks (title, description, status, comment, user_id_assigner, user_id_assignee) values ($1, $2, $3, $4, $5, $6);`
@@ -30,6 +35,7 @@ router.post('/tasks/new', ensureLoggedIn, (req, res) => {
     })
 })
 
+// updates an existing task in db
 router.put('/tasks', (req, res) => {
     const sql = `UPDATE tasks SET title = $1, description = $2, comment = $3, status = $4, user_id_assigner = $5 WHERE id = $6;`
     // console.log(req.body.title)
@@ -44,6 +50,7 @@ router.put('/tasks', (req, res) => {
     })
 })
 
+// deletes an existing task in db
 router.delete('/tasks/:task_id', (req, res) => {
     console.log('cp1')
     console.log(req.params.task_id)

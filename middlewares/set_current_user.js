@@ -1,4 +1,4 @@
-// middleware makes the user logged in available in the ejs templates
+// middleware makes the user logged in available to ejs templates
 function setCurrentUser(req, res, next) {
     const db = require('./../db')
     const { userId } = req.session

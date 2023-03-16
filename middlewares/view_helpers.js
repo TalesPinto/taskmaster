@@ -1,3 +1,5 @@
+// function to verify if the user is logged in
+
 function viewHelpers(req, res, next) {
     res.locals.isLoggedIn = () => {
         if (req.session.userId) {

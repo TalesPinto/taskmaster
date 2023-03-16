@@ -1,29 +1,33 @@
 <!-- fix it username later -->
-<p>Hello, <%= currentUser.username %> </p>
 
-<form action="/sessions/sign_out" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>Sign Out</button>
-</form>
+<section class="signout-header">
+    <p>Hello, <%= currentUser.username %> </p>
 
-<form action="/tasks">
-    <button>New Task</button>
-</form>
-
+    <form action="/sessions/sign_out" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button>Sign Out</button>
+    </form>
+</section>
+<section class="new-task-btn">
+    <form action="/tasks">
+        <button>New Task</button>
+    </form>
+</section>
 
 <div class="tasks-wrapper">
     <% for (let task of tasks) { %>
-        <div>
+        <div class="task-card">
             <form action="/tasks" method="post">
                 <input type="hidden" name="_method" value="put">
-                <input type="text" name="title" value="<%= task.title %>">
-                <input type="text" name="description" value="<%= task.description %>">
+                <input class="card-title" type="text" name="title" value="<%= task.title %>">
+                <input class="textbox-description-db" type="text" name="description" value="<%= task.description %>">
                 <input type="text" name="comment" value="<%= task.comment %>">
                 <input type="text" name="status" value="<%= task.status %>">
                 <input type="number" name="user_id_assigner" value="<%= task.user_id_assigner %>">
                 <input type="hidden" name="id" value="<%= task.id %>">
                 <button>Edit</button>
             </form>
+            <!-- router '/tasks/:task_id' created to make it possible to have two features (method put and delete) at the same for loop-->
             <form action="/tasks/<%= task.id %>" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <button>Delete</button>

@@ -1,16 +1,17 @@
 <h2>New task</h2>
-
-<form action="/tasks/new" method="post">
-    <label for="">Title</label>
-    <input type="text" name="title">
-    <label for="">Description</label>
-    <input type="text" name="description">
-    <label for="">Status</label>
-    <input type="text" name="status">
-    <label for="">Comment</label>
-    <input type="text" name="comment">
-    <input type="hidden" name="user_id_assigner">
-    <label for="">Assignee</label>
-    <input type="text" name="user_id_assignee">
-    <button>Submit task</button>
- </form>
+<section class="new-task">
+    <form action="/tasks/new" method="post">
+        <label for="">Title</label>
+        <input type="text" name="title">
+        <label for="">Description</label>
+        <input class="textbox-description-nt" type="text" name="description">
+        <label for="">Status</label>
+        <input type="text" name="status">
+        <label for="">Comment</label>
+        <input type="text" name="comment">
+        <input type="hidden" name="user_id_assigner">
+        <label for="">Assignee</label>
+        <input type="text" name="user_id_assignee">
+        <button>Submit task</button>
+    </form>
+</section>
