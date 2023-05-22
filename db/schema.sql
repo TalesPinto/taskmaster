@@ -17,3 +17,5 @@ CREATE TABLE users (
 );
 
 INSERT INTO tasks (title, description, status, comment, user_id_assignee, user_id_assigner) VALUES ('Clean Dishes', 'Wash manually all dishes', 'In Progress', 'I hate it!', 1, 2);
+
+SELECT * FROM tasks LEFT JOIN users ON users.id = tasks.user_id_assigner;
