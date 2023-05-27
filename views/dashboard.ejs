@@ -1,44 +1,77 @@
-<!-- fix it username later -->
+<header class="dashboard-header">
+  <h1>TaskMaster</h1>
+  <p>
+    Hello, <strong><%= currentUser.username %></strong>! Your id is:
+    <strong><%= currentUser.id %></strong>
+  </p>
+</header>
 
-<section class="signout-header">
-    <p>Hello, <strong><%= currentUser.username %></strong>  </p>
-    <p>Your id is: <strong><%= currentUser.id %></strong>  </p>
-    <form action="/sessions/sign_out" method="post">
-        <input type="hidden" name="_method" value="delete">
-        <button>Sign Out</button>
-    </form>
-</section>
+<form class="signout-btn" action="/sessions/sign_out" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <button class="btn btn-outline-danger btn-sm">Sign Out</button>
+</form>
+
 <section class="new-task-btn">
-    <form action="/tasks">
-        <button>New Task</button>
-    </form>
+  <form action="/tasks">
+    <button class="btn btn-primary btn-sm">New Task</button>
+  </form>
 </section>
 
 <div class="tasks-wrapper">
-    <% for (let task of tasks) { %>
-        <div class="task-card">
-            <form action="/tasks" method="post">
-                <input type="hidden" name="_method" value="put">
-                <input class="card-title" type="text" readonly="true" name="title" value="<%= task.title %>">
-                <label for="">Description</label>
-                <input class="textbox-description-db" type="text" readonly="true" name="description" value="<%= task.description %>">
-                <label for="">Comment</label>
-                <input type="text" readonly="true" name="comment" value="<%= task.comment %>">
-                <label for="">Status</label>
-                <input type="text" readonly="true" name="status" value="<%= task.status %>">
-                <label for="">Assigner</label>
-                <input type="number" readonly="true" name="user_id_assigner" value="<%= task.user_id_assigner %>">
-                <input type="hidden" readonly="true" name="id" value="<%= task.id %>">
-                <!-- <button>Edit</button> -->
-            </form>
-            <!-- router '/tasks/:task_id' created to make it possible to have two features (method put and delete) at the same for loop-->
-            <!-- <form action="/tasks/<%= task.id %>" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <button>Delete</button>
-            </form> -->
-            <form action="/dashboard/<%= task.id %>">
-                <button class="edit-btn">Edit</button>
-            </form>
-        </div>
-    <% } %>  
+  <% for (let task of tasks) { %>
+  <div class="task-card" onclick="handleClick('/dashboard/<%= task.id %>')">
+    <form action="/tasks" method="post">
+      <input type="hidden" name="_method" value="put" />
+      <input
+        class="card-title"
+        type="text"
+        readonly="true"
+        name="title"
+        value="<%= task.title %>"
+      />
+      <label for="">Description</label>
+      <!-- <input
+        class="textbox-description-db"
+        type="text"
+        readonly="true"
+        name="description"
+        value="<%= task.description %>"
+      /> -->
+      <textarea readonly rows="4" name="description">
+<%= task.description %></textarea
+      >
+      <label for="">Comments</label>
+      <input
+        type="text"
+        readonly="true"
+        name="comment"
+        value="<%= task.comment %>"
+      />
+      <label for="">Status</label>
+      <input
+        type="text"
+        readonly="true"
+        name="status"
+        value="<%= task.status %>"
+      />
+      <label for="">Assigner</label>
+      <input
+        type="number"
+        readonly="true"
+        name="user_id_assigner"
+        value="<%= task.user_id_assigner %>"
+      />
+    </form>
+  </div>
+  <% } %>
 </div>
+<footer>
+  <p>&copy; 2023, Tales Pinto. All the rights reserved.</p>
+</footer>
+
+<script>
+  function handleClick(url) {
+    // Navigate to the specified URL when the task-card is double-clicked
+    window.location.href = url
+  }
+</script>

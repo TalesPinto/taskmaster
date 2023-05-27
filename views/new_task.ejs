@@ -1,17 +1,33 @@
+<header class="dashboard-header">
+  <h1>TaskMaster</h1>
+  <p>
+    Hello, <strong><%= currentUser.username %></strong>! Your id is:
+    <strong><%= currentUser.id %></strong>
+  </p>
+</header>
+
+<form class="signout-btn" action="/sessions/sign_out" method="post">
+  <input type="hidden" name="_method" value="delete" />
+  <button class="btn btn-outline-danger btn-sm">Sign Out</button>
+</form>
+
 <h2>New task</h2>
-<section class="new-task">
-    <form action="/tasks/new" method="post">
-        <label for="">Title</label>
-        <input type="text" name="title">
-        <label for="">Description</label>
-        <input class="textbox-description-nt" type="text" name="description">
-        <label for="">Status</label>
-        <input type="text" name="status">
-        <label for="">Comment</label>
-        <input type="text" name="comment">
-        <input type="hidden" name="user_id_assigner">
-        <label for="">Assignee</label>
-        <input type="text" name="user_id_assignee">
-        <button>Submit task</button>
-    </form>
-</section>
+<div class="new-task">
+  <form action="/tasks/new" method="post">
+    <label for="">Title</label>
+    <input type="text" name="title" />
+    <label for="">Description</label>
+    <textarea rows="4" name="description"></textarea>
+    <label for="">Status</label>
+    <input type="text" name="status" />
+    <label for="">Comments</label>
+    <input type="text" name="comment" />
+    <input type="hidden" name="user_id_assigner" />
+    <label for="">Assignee</label>
+    <input type="text" name="user_id_assignee" />
+    <button class="btn btn-primary btn-sm">Submit task</button>
+  </form>
+</div>
+<footer>
+  <p>&copy; 2023, Tales Pinto. All the rights reserved.</p>
+</footer>

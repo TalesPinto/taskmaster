@@ -1,11 +1,32 @@
-<p>Please create an account before sign in.</p>
-
+<header>
+  <h1>TaskMaster</h1>
+</header>
+<p class="signup-message">Please create an account before sign in.</p>
 <div class="signup-wrapper">
-    <form action="/sessions/sign_up" method="post">
-        <label for="">Username</label>
-        <input type="text" name="username">
-        <label for="">Password</label>
-        <input type="password" name="password">
-        <button>Sign Up</button>
-    </form>
+  <form action="/sessions/sign_up" method="post">
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="floatingInput"
+        placeholder="Username"
+        name="username"
+      />
+      <label for="username">Username</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input
+        type="password"
+        class="form-control"
+        id="floatingPassword"
+        placeholder="Password"
+        name="password"
+      />
+      <label for="pasword">Password</label>
+    </div>
+    <button class="btn btn-primary btn-sm">Sign Up</button>
+  </form>
 </div>
+<footer>
+  <p>&copy; 2023, Tales Pinto. All the rights reserved.</p>
+</footer>
